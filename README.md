@@ -17,9 +17,6 @@ This is a frontend clone of the Razorpay homepage created using HTML, CSS, and J
 ## Project Type
 Frontend Web Development Project
 
-## Live Demo
-(After enabling GitHub Pages, add link here)
-
 ## Author
 Mansi Bhagwat Patil
 
