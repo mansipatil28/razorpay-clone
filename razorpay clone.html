@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay - Best Payment Gateway for Online Payments - India</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Trebuchet MS', Arial, sans-serif;
+            color: #161f3e;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            padding: 16px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #3281F2;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #161f3e;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #3281F2;
+        }
+
+        .nav-btns {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-login {
+            color: #3281F2;
+            background: transparent;
+            border: 1px solid #3281F2;
+            padding: 9px 22px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-login:hover {
+            background: #f7faff;
+        }
+
+        .btn-signup {
+            background: #3281F2;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-signup:hover {
+            background: #2666cc;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: #161f3e;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f7faff 0%, #e8f2ff 100%);
+            padding: 80px 40px;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            color: #161f3e;
+            line-height: 1.25;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: #5a6987;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .hero-btn {
+            background: #3281F2;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: #2666cc;
+            box-shadow: 0 10px 25px rgba(50, 129, 242, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 450px;
+            background: linear-gradient(135deg, #4A90E2 0%, #6CB4F2 100%);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .visual-person {
+            position: absolute;
+            bottom: 0;
+            right: 80px;
+            width: 200px;
+            height: 320px;
+            background: linear-gradient(135deg, #2D5F8D 0%, #1E4A6D 100%);
+            border-radius: 100px 100px 0 0;
+        }
+
+        .visual-head {
+            position: absolute;
+            top: 30px;
+            right: 40%;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #FF9557 0%, #FF7043 100%);
+            border-radius: 50%;
+        }
+
+        .visual-coffee {
+            position: absolute;
+            bottom: 100px;
+            left: 60px;
+            width: 50px;
+            height: 65px;
+            background: linear-gradient(135deg, #FF6F00 0%, #F4511E 100%);
+            border-radius: 4px 4px 12px 12px;
+        }
+
+        .visual-coffee::after {
+            content: '';
+            position: absolute;
+            right: -12px;
+            top: 12px;
+            width: 15px;
+            height: 25px;
+            border: 3px solid #F4511E;
+            border-left: none;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .visual-coins {
+            position: absolute;
+            bottom: 150px;
+            left: 40px;
+        }
+
+        .coin {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #FFD54F 0%, #FFC107 100%);
+            border-radius: 50%;
+            margin-bottom: -12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .visual-payment {
+            position: absolute;
+            top: 70px;
+            right: 40px;
+            background: white;
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+            width: 250px;
+        }
+
+        .payment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .payment-logo {
+            font-weight: 700;
+            color: #3281F2;
+            font-size: 15px;
+        }
+
+        .payment-close {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #888;
+        }
+
+        .payment-amount {
+            background: #FFF9C4;
+            padding: 14px;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .amount {
+            font-size: 28px;
+            font-weight: 700;
+            color: #161f3e;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .payment-method {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #161f3e;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .payment-method:hover {
+            background: #e8f2ff;
+            color: #3281F2;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 90px 40px;
+            background: white;
+        }
+
+        .features-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            color: #161f3e;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #5a6987;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 35px;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 30px 20px;
+            transition: transform 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #e8f2ff, #cfe7ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .feature-box h3 {
+            font-size: 18px;
+            color: #161f3e;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .feature-box p {
+            color: #5a6987;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 90px 40px;
+            background: #f7faff;
+        }
+
+        .products-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 35px 28px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid #e6ecf5;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            border-color: #3281F2;
+        }
+
+        .product-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #3281F2, #2666cc);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            color: #161f3e;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .product-card p {
+            color: #5a6987;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .product-link {
+            color: #3281F2;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .product-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 70px 40px;
+            background: linear-gradient(135deg, #3281F2 0%, #2666cc 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .stats-title {
+            font-size: 38px;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+        }
+
+        .stat-box h3 {
+            font-size: 46px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .stat-box p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        /* Trust Section */
+        .trust {
+            padding: 50px 40px;
+            background: white;
+            text-align: center;
+        }
+
+        .trust p {
+            color: #5a6987;
+            font-size: 13px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .trust-logo {
+            padding: 12px 28px;
+            background: #f7faff;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #161f3e;
+            font-size: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: #161f3e;
+            color: white;
+            padding: 70px 40px 30px;
+        }
+
+        .footer-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(4, 1fr);
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-about {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 66px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 25px 0;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                gap: 18px;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-btns {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 34px;
+            }
+
+            .features-grid,
+            .products-grid,
+            .stats-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .stats-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="logo">razorpay</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#payments">Payments</a></li>
+                <li><a href="#banking">Banking+</a></li>
+                <li><a href="#payroll">Payroll</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+            <div class="nav-btns">
+                <button class="btn-login" onclick="handleLogin()">Log In</button>
+                <button class="btn-signup" onclick="handleSignup()">Sign Up</button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Power your finance, grow your business</h1>
+                <p>Accept payments from customers. Automate payouts to vendors & employees. Never run out of working capital.</p>
+                <button class="hero-btn" onclick="handleSignup()">Sign Up Now</button>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-head"></div>
+                <div class="visual-person"></div>
+                <div class="visual-coffee"></div>
+                <div class="visual-coins">
+                    <div class="coin"></div>
+                    <div class="coin"></div>
+                    <div class="coin"></div>
+                </div>
+                <div class="visual-payment">
+                    <div class="payment-header">
+                        <div class="payment-logo">razorpay</div>
+                        <div class="payment-close">×</div>
+                    </div>
+                    <div class="payment-amount">
+                        <div class="amount">₹2,499</div>
+                    </div>
+                    <div class="payment-methods">
+                        <div class="payment-method">UPI</div>
+                        <div class="payment-method">Cards</div>
+                        <div class="payment-method">Wallets</div>
+                        <div class="payment-method">Banking</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust">
+        <p>50,00,000+ BUSINESSES USE RAZORPAY</p>
+        <div class="trust-logos">
+            <div class="trust-logo">Swiggy</div>
+            <div class="trust-logo">BookMyShow</div>
+            <div class="trust-logo">Zomato</div>
+            <div class="trust-logo">Airtel</div>
+            <div class="trust-logo">CRED</div>
+            <div class="trust-logo">Ola</div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Features</h2>
+                <p>Empower your business with all the right tools to accept online payments</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Activation</h3>
+                    <p>Get activated and transact within 2 minutes. Completely online onboarding with minimum documentation.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Easy Integration</h3>
+                    <p>With plugins for all major platforms and languages, integrate and go live with Razorpay in less than an hour.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>API Driven</h3>
+                    <p>Build your business for scale with our complete API-driven automation that requires zero manual intervention.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">💳</div>
+                    <h3>100+ Payment Modes</h3>
+                    <p>Offer your customers the luxury of all payment modes including cards, Netbanking, UPI, Wallets etc.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">💰</div>
+                    <h3>Simple Pricing</h3>
+                    <p>Our innovative payment solutions with competitive pricing make payments simpler.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Secure</h3>
+                    <p>PCI DSS Level 1 compliant solution which removes your burden of regulatory compliance.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">💬</div>
+                    <h3>Best in Industry Support</h3>
+                    <p>Always available email, phone and chat based support to help you in your every step.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📊</div>
+                    <h3>Dashboard Reporting</h3>
+                    <p>Real-time data and insights on your Razorpay Dashboard to make informed business decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="payments">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Accept Payments with Razorpay Payment Suite</h2>
+                <p>Complete payment solutions for your business</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card" onclick="showProduct('Payment Gateway')">
+                    <div class="product-icon">🌐</div>
+                    <h3>Payment Gateway</h3>
+                    <p>Supercharge your business with the all-powerful Payment Gateway. Accept 100+ payment methods with industry leading success rate.</p>
+                    <a href="#" class="product-link">Know More →</a>
+                </div>
+                <div class="product-card" onclick="showProduct('Payment Links')">
+                    <div class="product-icon">🔗</div>
+                    <h3>Payment Links</h3>
+                    <p>Share payment link via an email, SMS, messenger, chatbot etc. and get paid immediately.</p>
+                    <a href="#" class="product-link">Know More →</a>
+                </div>
+                <div class="product-card" onclick="showProduct('Payment Pages')">
+                    <div class="product-icon">📄</div>
+                    <h3>Payment Pages</h3>
+                    <p>Take your store online instantly with zero coding. Accept international & domestic payments.</p>
+                    <a href="#" class="product-link">Know More →</a>
+                </div>
+                <div class="product-card" onclick="showProduct('Payment Buttons')">
+                    <div class="product-icon">🔘</div>
+                    <h3>Payment Buttons</h3>
+                    <p>Create, copy & collect with payment button. Collect one time or subscription payments & more.</p>
+                    <a href="#" class="product-link">Know More →</a>
+                </div>
+                <div class="product-card" onclick="showProduct('Subscriptions')">
+                    <div class="product-icon">🔄</div>
+                    <h3>Subscriptions</h3>
+                    <p>Subscription plans with automated recurring transactions on various payment modes.</p>
+                    <a href="#" class="product-link">Know More →</a>
+                </div>
+                <div class="product-card" onclick="showProduct('Smart Collect')">
+                    <div class="product-icon">🎯</div>
+                    <h3>Smart Collect</h3>
+                    <p>Automatically reconcile incoming NEFT, RTGS, IMPS, UPI payments using customer identifiers & UPI-IDs.</p>
+                    <a href="#" class="product-link">Know More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <h2 class="stats-title">Join the 50,00,000+ businesses using Razorpay</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>50L+</h3>
+                    <p>Businesses</p>
+                </div>
+                <div class="stat-box">
+                    <h3>100+</h3>
+                    <p>Payment Modes</p>
+                </div>
+                <div class="stat-box">
+                    <h3>99.99%</h3>
+                    <p>Uptime</p>
+                </div>
+                <div class="stat-box">
+                    <h3>2 Min</h3>
+                    <p>Setup Time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>RAZORPAY</h3>
+                <p class="footer-about">Razorpay is the only payments solution in India that allows businesses to accept, process and disburse payments with its product suite. Fast forward your business with Razorpay.</p>
+            </div>
+            <div class="footer-col">
+                <h3>ACCEPT PAYMENTS</h3>
+                <ul>
+                    <li><a href="#">Payment Gateway</a></li>
+                    <li><a href="#">Payment Pages</a></li>
+                    <li><a href="#">Payment Links</a></li>
+                    <li><a href="#">QR Codes</a></li>
+                    <li><a href="#">Subscriptions</a></li>
+                    <li><a href="#">Smart Collect</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>BANKING PLUS</h3>
+                <ul>
+                    <li><a href="#">RazorpayX</a></li>
+                    <li><a href="#">Current Account</a></li>
+                    <li><a href="#">Payouts</a></li>
+                    <li><a href="#">Payout Links</a></li>
+                    <li><a href="#">Corporate Cards</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>RESOURCES</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Learn</a></li>
+                    <li><a href="#">Customer Stories</a></li>
+                    <li><a href="#">Developer Docs</a></li>
+                    <li><a href="#">API Reference</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Razorpay Software Limited. All rights reserved. | QSkill Internship Project - Slab 2</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const spans = hamburger.querySelectorAll('span');
+            
+            if (navLinks.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Button Handlers
+        function handleLogin() {
+            alert('🔐 Log In to Razorpay\n\nAccess your dashboard:\n✓ View transactions\n✓ Track payments\n✓ Manage settlements\n✓ Download reports\n\nEmail: demo@razorpay.com\nPassword: ••••••••');
+        }
+
+        function handleSignup() {
+            alert('✨ Sign Up for Razorpay\n\n3 Simple Steps:\n1
